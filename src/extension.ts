@@ -18,7 +18,7 @@ import * as vscode from 'vscode';
  async function helmixDecrypt(uri: vscode.Uri): Promise<vscode.TextEditor | undefined> {
 	const filePath = uri.fsPath;
 	const command = `helm secrets decrypt -i ${filePath}`;
-	const ext = ".dec";
+	// const ext = ".dec";
 	if(vscode.window.terminals.length === 0){
 		const newTerminal = vscode.window.createTerminal(`helmix terminal`);
 		newTerminal.show();
@@ -29,7 +29,7 @@ import * as vscode from 'vscode';
 		vscode.window.activeTerminal?.sendText(command);
 	}
 
-	return openFile(filePath + ext);
+	return openFile(filePath);
 }
 
 /**
